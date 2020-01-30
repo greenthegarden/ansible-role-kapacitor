@@ -1,0 +1,7 @@
+---
+
+- name: Install package
+  become: yes
+  package:
+    name: kapacitor
+    state: present

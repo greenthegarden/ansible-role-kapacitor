@@ -1,0 +1,12 @@
+---
+
+- name: Download package
+  become: yes
+  get_url:
+    url: "{{ kapacitor_pkg }}"
+    dest: /tmp/kapacitor_linux_armhf.tar.gz
+
+- name: Install package
+  unarchive:
+    src: /tmp/kapacitor_linux_armhf.tar.gz
+    dest: /usr/local/bin/kapacitor
