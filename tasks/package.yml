@@ -2,6 +2,6 @@
 
 - name: Install package
   become: yes
-  package:
-    name: kapacitor
-    state: present
+  apt:
+    deb: "{{ kapacitor_pkg_deb }}"
+  when: ansible_pkg_mgr == 'apt'

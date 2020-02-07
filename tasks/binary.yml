@@ -1,12 +1,15 @@
 ---
 
-- name: Download package
-  become: yes
-  get_url:
-    url: "{{ kapacitor_pkg }}"
-    dest: /tmp/kapacitor_linux_armhf.tar.gz
+- name: Install from binary when arm
+  block:
+    - name: Download package
+      become: yes
+      get_url:
+        url: "{{ kapacitor_pkg }}"
+        dest: /tmp/kapacitor_linux_armhf.tar.gz
 
-- name: Install package
-  unarchive:
-    src: /tmp/kapacitor_linux_armhf.tar.gz
-    dest: /usr/local/bin/kapacitor
+    - name: Install package
+      unarchive:
+        src: /tmp/kapacitor_linux_armhf.tar.gz
+        dest: /usr/local/bin/kapacitor
+  when: ansible_architecture == 'armhf'

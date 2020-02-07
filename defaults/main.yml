@@ -2,4 +2,7 @@
 # defaults file for ansible-role-kapacitor
 
 kapacitor_version: 1.5.4
-kapacitor_pkg: "https://dl.influxdata.com/kapacitor/releases/kapacitor-{{ kapacitor_version }}_linux_armhf.tar.gz"
+
+kapacitor_pkg_arm: "https://dl.influxdata.com/kapacitor/releases/kapacitor-{{ kapacitor_version }}_linux_armhf.tar.gz"
+
+kapacitor_pkg_deb: https://dl.influxdata.com/kapacitor/releases/kapacitor_{{ kapacitor_version }}-1_amd64.deb
