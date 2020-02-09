@@ -12,4 +12,4 @@
       unarchive:
         src: /tmp/kapacitor_linux_armhf.tar.gz
         dest: /usr/local/bin/kapacitor
-  when: ansible_architecture == 'armhf'
+  when: ansible_architecture.find('v=' ~ 'arm') == -1
