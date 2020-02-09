@@ -1,0 +1,10 @@
+[Unit]
+Description=Kapacitor service
+
+[Service]
+ExecStart={{ kapacitor_install_location }}/{{ kapacitor_service_name }} -b /var/lib/chronograf/chronograf-v1.db >/dev/null 2>&1
+NotifyAccess=main
+#WatchdogSec=10
+Restart=on-failure
+ProtectHome=true
+ProtectSystem=full

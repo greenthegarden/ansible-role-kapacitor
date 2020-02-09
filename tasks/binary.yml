@@ -1,15 +1,24 @@
 ---
 
-- name: Install from binary when arm
+- name: Install from binary when architecture is ARM
   block:
-    - name: Download package
+    - name: Download and install package (no checksum)
       become: yes
-      get_url:
-        url: "{{ kapacitor_pkg }}"
-        dest: /tmp/kapacitor_linux_armhf.tar.gz
-
-    - name: Install package
       unarchive:
-        src: /tmp/kapacitor_linux_armhf.tar.gz
-        dest: /usr/local/bin/kapacitor
+        src: "{{ kapacitor_binary_arm }}"
+        dest: "{{ kapacitor_binary_location }}"
+
+    - name: Add service
+      become: yes
+      template:
+        src: kapacitor.service.j2
+        dest: "/etc/systemd/system/{{ kapacitor_service_name }}.service"
+
+    - name: Run service
+      become: yes
+      systemd:
+        name: "{{ kapacitor_service_name }}"
+        state: started
+        daemon_reload: yes
+        enabled: yes
   when: ansible_architecture.find('v=' ~ 'arm') == -1

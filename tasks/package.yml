@@ -1,5 +1,9 @@
 ---
 
+- set_fact:
+    kapacitor_pkg: "{{ kapacitor_pkg_deb }}"
+  when: ansible_architecture == 'amd64'
+
 - name: Install package
   become: yes
   apt:

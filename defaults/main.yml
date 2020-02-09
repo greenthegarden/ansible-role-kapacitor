@@ -3,6 +3,12 @@
 
 kapacitor_version: 1.5.4
 
-kapacitor_pkg_arm: "https://dl.influxdata.com/kapacitor/releases/kapacitor-{{ kapacitor_version }}_linux_armhf.tar.gz"
+kapacitor_download_destination: /tmp/kapacitor_linux_armhf.tar.gz
+kapacitor_install_location: /usr/bin
+kapacitor_service_name: kapacitor
+
+kapacitor_binary_arm: "https://dl.influxdata.com/kapacitor/releases/kapacitor-{{ kapacitor_version }}_linux_armhf.tar.gz"
 
 kapacitor_pkg_deb: https://dl.influxdata.com/kapacitor/releases/kapacitor_{{ kapacitor_version }}-1_amd64.deb
+
+kapacitor_pkg: kapacitor
